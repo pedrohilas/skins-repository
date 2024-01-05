@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/screens/myaccount/components/myaccount_form.dart';
 import 'package:shop_app/screens/myaccount/myaccout_screen.dart';
-import 'package:shop_app/screens/settings/settings_screen.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:shop_app/screens/sign_up/sign_up_screen.dart';
 import 'package:shop_app/user.dart';
@@ -41,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
             ProfileMenu(
               text: "Settings",
               icon: "assets/icons/Settings.svg",
-              press: () => Navigator.pushNamed(context,SettingsScreen.routeName), // ensure the press is a function
+              press: () => Navigator.pushNamed(context,SignInScreen.routeName), // ensure the press is a function
             ),
             ProfileMenu(
               text: "Log Out",
