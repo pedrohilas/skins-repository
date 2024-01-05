@@ -137,10 +137,12 @@ class _SignFormState extends State<SignForm> {
            onPressed: () async {
   if (_formKey.currentState!.validate()) {
     _formKey.currentState!.save();
-
     // Tenta fazer login com o email e senha fornecidos
     User? user = await DatabaseHelper.instance.loginUser(email!, password!);
+  
+         
 
+  
     if (user != null) {
       // Usuário encontrado, proceda com o login
       Navigator.pushNamed(context, LoginSuccessScreen.routeName);
@@ -159,3 +161,4 @@ class _SignFormState extends State<SignForm> {
     );
   }
 }
+ 

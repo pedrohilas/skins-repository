@@ -181,7 +181,15 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                   print(
                       'User: ${user.name}, LASTNAME: ${user.lastname},PhoneNumber: ${user.PhoneNumber}, ADDRESS: ${user.address}, Email: ${user.email}');
                 }
-                Navigator.pushNamed(context, SignInScreen.routeName);
+                Navigator.pushNamed(
+                  context,
+                  SignInScreen.routeName,
+                  arguments: {'newUser2': newUser},
+                );                  
+
+
+
+
               }
             },
             child: const Text("Continue"),

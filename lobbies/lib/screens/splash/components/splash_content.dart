@@ -35,8 +35,8 @@ class _SplashContentState extends State<SplashContent> {
 
 Image.asset(
   widget.image!,
-  height: MediaQuery.of(context).size.height * 0.5, // 50% da altura da tela
-  width: MediaQuery.of(context).size.width * 0.8, // 80% da largura da tela
+  height: MediaQuery.of(context).size.height * 0.3, // 50% da altura da tela
+  width: MediaQuery.of(context).size.width * 0.6, // 80% da largura da tela
 ),
 
       ],

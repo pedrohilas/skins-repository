@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/screens/myaccount/components/myaccount_form.dart';
-import 'package:shop_app/user.dart';
 
-class MyAccountScreen extends StatelessWidget {
-  static const routeName = '/myAccountScreen';
+class UserProfileScreen extends StatelessWidget {
+  static const routeName = '/userProfile'; // Definindo o nome da rota
 
-  const MyAccountScreen({super.key}) ;
+  final String userEmail;
+
+  const UserProfileScreen({required this.userEmail});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Minha Conta'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-      
-      ),
+      body: UserDetailsByEmailPage(userEmail),
     );
   }
 }

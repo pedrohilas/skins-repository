@@ -47,7 +47,7 @@ Future<User?> loginUser(String email, String password) async {
       return User.fromMap(result.first);
     }
 
-    // Retorna null se o usuário não for encontrado
+    // Retorna null se o usuário não for encontrado 
     return null;
   }
  
@@ -66,6 +66,29 @@ Future<User?> loginUser(String email, String password) async {
 ''');
 
   }
+    // Função para buscar um usuário pelo e-mail
+   // Função para buscar um usuário pelo e-mail
+Future<User?> getUserByEmail(String userEmail) async {
+  final db = await database;
+
+  List<Map<String, dynamic>> queryResult = await db.query(
+    'user_table',
+    where: '$columnEmail = ?',  // Usando a variável correta
+    whereArgs: [userEmail],
+  );
+
+
+  // Verifica se encontrou algum usuário e retorna o primeiro resultado
+  if (queryResult.isNotEmpty) {
+    return User.fromMap(queryResult.first); // Certifique-se de que fromMap aceita Map<String, dynamic>
+  } else {
+    return null; // Retorna nulo se nenhum usuário for encontrado
+  }
+}
+
+
+
+
 
   // Insert a User into the database
   Future<void> insertUser(User user) async {

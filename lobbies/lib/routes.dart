@@ -1,9 +1,11 @@
 
 import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
+import 'package:shop_app/ThemeManager.dart';
 
 import 'package:shop_app/screens/myaccount/components/myaccount_form.dart';
 import 'package:shop_app/screens/products/products_screen.dart';
+import 'package:shop_app/screens/settings/settings_screen.dart';
 import 'package:shop_app/user.dart';
 
 import 'screens/cart/cart_screen.dart';
@@ -21,8 +23,21 @@ import 'screens/myaccount/myaccout_screen.dart';
 
 // We use name route
 // All our routes will be available here
-final Map<String, WidgetBuilder> routes = {
-  InitScreen.routeName: (context) => const InitScreen(),
+
+  String name = '';
+  String email = '';
+  String password = '';
+  String lastname = '';
+  String PhoneNumber = '';
+  String address = '';
+
+
+
+
+
+Map<String, WidgetBuilder> routes(ThemeManager themeManager) { // Adicione o parâmetro themeManager
+  return {
+   InitScreen.routeName: (context) => const InitScreen(),
   SplashScreen.routeName: (context) => const SplashScreen(),
   SignInScreen.routeName: (context) => const SignInScreen(),
   ForgotPasswordScreen.routeName: (context) => const ForgotPasswordScreen(),
@@ -35,10 +50,11 @@ final Map<String, WidgetBuilder> routes = {
   DetailsScreen.routeName: (context) => const DetailsScreen(),
   CartScreen.routeName: (context) => const CartScreen(),
   ProfileScreen.routeName: (context) => const ProfileScreen(),
+  SettingsScreen.routeName: (context) => SettingsScreen(themeManager: themeManager,),
+
+
+
 // No arquivo de rotas, onde você define os mapeamentos de rota
-MyAccountScreen.routeName: (context) => const MyAccountScreen(),
-
-
-
-
-};
+  UserProfileScreen.routeName :(context) => const UserProfileScreen(userEmail: "ola@gmail.com"),
+  };
+}

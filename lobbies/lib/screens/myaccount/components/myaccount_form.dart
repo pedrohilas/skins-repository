@@ -1,65 +1,57 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:shop_app/database_helper.dart';
 import 'package:shop_app/user.dart';
 
-class TelaMinhaConta extends StatefulWidget {
-  final User newUser; // Adicione um objeto Usuario como parâmetro
+class UserDetailsByEmailPage extends StatefulWidget {
+  final String userEmail;
 
-  const TelaMinhaConta({Key? key, required this.newUser}) : super(key: key);
+  const UserDetailsByEmailPage(this.userEmail, {Key? key}) : super(key: key);
 
   @override
-  _TelaMinhaContaState createState() => _TelaMinhaContaState();
+  _UserDetailsByEmailPageState createState() => _UserDetailsByEmailPageState();
 }
 
-class _TelaMinhaContaState extends State<TelaMinhaConta> {
-  final _formKey = GlobalKey<FormState>();
-
-  late String name;
-  late String lastname;
-  late String PhoneNumber;
-  late String address;
-  
+class _UserDetailsByEmailPageState extends State<UserDetailsByEmailPage> {
+  late Future<User?> _userFuture; // Futuro para armazenar o resultado de getUserByEmail
 
   @override
   void initState() {
     super.initState();
-    // Inicialize os valores dos campos com os dados do usuário
-    name = widget.newUser.name;
-    lastname = widget.newUser.lastname;
-    PhoneNumber = widget.newUser.PhoneNumber;
-    address = widget.newUser.address;
+    // Inicializando o Future no início do ciclo de vida do estado
+    _userFuture = DatabaseHelper.instance.getUserByEmail(widget.userEmail);
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          // Adicione TextFormFields para cada campo, inicializando
-          // seu valor e configurando suas propriedades
-          // Exemplo para o campo nome:
-          TextFormField(
-  initialValue: name,
-  decoration: InputDecoration(labelText: "Nome"),
-  // Configurações adicionais...
-      
-  
-),
- 
-
-TextFormField(
-  initialValue: lastname,
-  decoration: InputDecoration(labelText: "Sobrenome"),
-  // Configurações adicionais...
-          
-),
-          // Repita para sobrenome, número de telefone e endereço
-          // Botão ou ação para salvar as alterações, se necessário
-        ],
-      ),
-    );
-  }
+@override
+Widget build(BuildContext context) {
+  return FutureBuilder<User?>(
+    future: _userFuture,
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.done) {
+        if (snapshot.hasError) {
+          // Imprimir e exibir qualquer erro que ocorra
+          print("Error fetching user: ${snapshot.error}");
+          return Center(child: Text('Erro ao buscar usuário: ${snapshot.error}'));
+        }
+        if (snapshot.hasData) {
+          User? user = snapshot.data;
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text('User Email: ${user?.email}'),
+                Text('User Name: ${user?.name}'),
+                // ... Adicione mais campos conforme necessário
+              ],
+            ),
+          );
+        } else {
+          // Se não houver dados, exibir esta mensagem
+          return Center(child: Text('Nenhum usuário encontrado com esse e-mail.'));
+        }
+      } else {
+        // Indicador de carregamento enquanto o estado não está 'done'
+        return Center(child: CircularProgressIndicator());
+      }
+    },
+  );
+}
 }
