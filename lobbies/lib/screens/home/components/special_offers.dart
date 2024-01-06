@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/screens/products/products_screen.dart';
+import 'package:shop_app/screens/products/products_screen2.dart';
+import 'package:shop_app/screens/products/products_screen3.dart';
 
 import 'section_title.dart';
 
@@ -23,22 +25,35 @@ class SpecialOffers extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
+              // Home Page  -->  Special offer for you
               SpecialOfferCard(
-                image: "assets/images/Image Banner 2.png",
-                category: "Smartphone",
-                numOfBrands: 18,
+              // Home Page  -->  Special offer for you #1
+                image: "assets/images/how-many-skins-are-in-fortnite.png",
+                category: "Fortnite",
+                numOfBrands:8,
                 press: () {
                   Navigator.pushNamed(context, ProductsScreen.routeName);
                 },
               ),
               SpecialOfferCard(
-                image: "assets/images/Image Banner 3.png",
-                category: "Fashion",
-                numOfBrands: 24,
+              // Home Page  -->  Special offer for you #2
+                image: "assets/images/CSGO2 (2).png",
+                category: "CS:GO",
+                numOfBrands: 8,
                 press: () {
-                  Navigator.pushNamed(context, ProductsScreen.routeName);
+                  Navigator.pushNamed(context, ProductsScreen2.routeName);
                 },
               ),
+               SpecialOfferCard(
+              // Home Page  -->  Special offer for you #3
+                image: "assets/images/rocketLeague.png",
+                category: "Rocket League",
+                numOfBrands: 8,
+                press: () {
+                  Navigator.pushNamed(context, ProductsScreen3.routeName);
+                },
+              ),
+
               const SizedBox(width: 20),
             ],
           ),

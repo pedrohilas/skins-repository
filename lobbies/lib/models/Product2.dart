@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-//FORTNITE
-class Product {
+//CSGO
+class Product2 {
   final int id;
   final String title, description;
   final List<String> images;
@@ -8,7 +8,7 @@ class Product {
   final double rating, price;
   final bool isFavourite, isPopular;
 
-  Product({
+  Product2({
     required this.id,
     required this.images,
     required this.colors,
@@ -23,14 +23,14 @@ class Product {
 
 // Our demo Products
 
-List<Product> demoProducts = [
-  Product(
+List<Product2> demoProducts2 = [
+  Product2(
     id: 1,
     images: [
-      "assets/images/Skin1.png",
-      "assets/images/Skin2.png",
-      "assets/images/Skin3.png",
-      "assets/images/Skin4.png",
+      "assets/images/cs1.png",
+      "assets/images/skincs2.png",
+      "assets/images/cs3.png",
+      "assets/images/cs4.png",
     ],
     colors: [
       const Color(0xFFF6625E),
@@ -38,17 +38,17 @@ List<Product> demoProducts = [
       const Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Skin1",
+    title: "Skin cs1",
     price: 64.99,
     description: description,
     rating: 4.8,
     isFavourite: true,
     isPopular: true,
   ),
-  Product(
+  Product2(
     id: 2,
     images: [
-      "assets/images/Skin2.png",
+      "assets/images/skincs2.png",
     ],
     colors: [
       const Color(0xFFF6625E),
@@ -56,16 +56,16 @@ List<Product> demoProducts = [
       const Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Skin2",
+    title: "cs2",
     price: 50.5,
     description: description,
     rating: 4.1,
     isPopular: true,
   ),
-  Product(
+  Product2(
     id: 3,
     images: [
-      "assets/images/Skin3.png",
+      "assets/images/cs3.png",
     ],
     colors: [
       const Color(0xFFF6625E),
@@ -73,17 +73,17 @@ List<Product> demoProducts = [
       const Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Skin3",
+    title: "cs3",
     price: 36.55,
     description: description,
     rating: 4.1,
     isFavourite: true,
     isPopular: true,
   ),
-  Product(
+  Product2(
     id: 4,
     images: [
-      "assets/images/Skin4.png",
+      "assets/images/cs4.png",
     ],
     colors: [
       const Color(0xFFF6625E),
@@ -91,19 +91,19 @@ List<Product> demoProducts = [
       const Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Skin4",
+    title: "cs4",
     price: 20.20,
     description: description,
     rating: 4.1,
     isFavourite: true,
   ),
-  Product(
+  Product2(
     id: 1,
     images: [
-      "assets/images/Skin5.png",
-      "assets/images/Skin6.png",
-      "assets/images/Skin7.png",
-      "assets/images/Skin8.png",
+      "assets/images/cs5.png",
+      "assets/images/cs6.png",
+      "assets/images/cs7.png",
+      "assets/images/cs8.png",
     ],
     colors: [
       const Color(0xFFF6625E),
@@ -111,17 +111,17 @@ List<Product> demoProducts = [
       const Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Skin5",
+    title: "cs5",
     price: 64.99,
     description: description,
     rating: 4.8,
     isFavourite: true,
     isPopular: true,
   ),
-  Product(
+  Product2(
     id: 2,
     images: [
-      "assets/images/Skin6.png",
+      "assets/images/cs6.png",
     ],
     colors: [
       const Color(0xFFF6625E),
@@ -129,16 +129,16 @@ List<Product> demoProducts = [
       const Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Skin6",
+    title: "cs6",
     price: 50.5,
     description: description,
     rating: 4.1,
     isPopular: true,
   ),
-  Product(
+  Product2(
     id: 3,
     images: [
-      "assets/images/Skin7.png",
+      "assets/images/cs7.png",
     ],
     colors: [
       const Color(0xFFF6625E),
@@ -146,17 +146,17 @@ List<Product> demoProducts = [
       const Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Skin7",
+    title: "cs7",
     price: 36.55,
     description: description,
     rating: 4.1,
     isFavourite: true,
     isPopular: true,
   ),
-  Product(
+  Product2(
     id: 4,
     images: [
-      "assets/images/Skin8.png",
+      "assets/images/cs8.png",
     ],
     colors: [
       const Color(0xFFF6625E),
@@ -164,7 +164,7 @@ List<Product> demoProducts = [
       const Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Skin8",
+    title: "cs8",
     price: 20.20,
     description: description,
     rating: 4.1,

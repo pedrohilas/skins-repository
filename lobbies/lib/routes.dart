@@ -1,10 +1,12 @@
 
 import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
-import 'package:shop_app/ThemeManager.dart';
 
 import 'package:shop_app/screens/myaccount/components/myaccount_form.dart';
 import 'package:shop_app/screens/products/products_screen.dart';
+import 'package:shop_app/screens/products/products_screen2.dart';
+import 'package:shop_app/screens/products/products_screen3.dart';
+import 'package:shop_app/screens/settings/components/settings_form.dart';
 import 'package:shop_app/screens/settings/settings_screen.dart';
 import 'package:shop_app/user.dart';
 
@@ -32,11 +34,8 @@ import 'screens/myaccount/myaccout_screen.dart';
   String address = '';
 
 
-
-
-
-Map<String, WidgetBuilder> routes(ThemeManager themeManager) { // Adicione o parâmetro themeManager
-  return {
+Map<String, WidgetBuilder> routes = { // Adicione o parâmetro themeManager
+  
    InitScreen.routeName: (context) => const InitScreen(),
   SplashScreen.routeName: (context) => const SplashScreen(),
   SignInScreen.routeName: (context) => const SignInScreen(),
@@ -47,14 +46,15 @@ Map<String, WidgetBuilder> routes(ThemeManager themeManager) { // Adicione o par
 
   HomeScreen.routeName: (context) => const HomeScreen(),
   ProductsScreen.routeName: (context) => const ProductsScreen(),
+  ProductsScreen2.routeName:(context) => const ProductsScreen2(),
+  ProductsScreen3.routeName:(context) => const ProductsScreen3(),
+
   DetailsScreen.routeName: (context) => const DetailsScreen(),
   CartScreen.routeName: (context) => const CartScreen(),
   ProfileScreen.routeName: (context) => const ProfileScreen(),
-  SettingsScreen.routeName: (context) => SettingsScreen(themeManager: themeManager,),
-
-
-
+  SettingsScreen.routeName: (context) => const SettingsScreen(),
 // No arquivo de rotas, onde você define os mapeamentos de rota
   UserProfileScreen.routeName :(context) => const UserProfileScreen(userEmail: "ola@gmail.com"),
+
+
   };
-}

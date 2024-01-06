@@ -9,7 +9,7 @@ const kPrimaryGradientColor = LinearGradient(
 );
 const kSecondaryColor = Color(0xFF979797);
 const kTextColor = Color.fromARGB(255, 252, 250, 250);
-
+const kTextColor2 = Color.fromARGB(255, 0, 0, 0);
 const kAnimationDuration = Duration(milliseconds: 200);
 
 const headingStyle = TextStyle(

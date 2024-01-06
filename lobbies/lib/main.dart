@@ -1,37 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
+import 'package:shop_app/screens/settings/settings_screen.dart';
 import 'package:shop_app/screens/splash/splash_screen.dart';
 import 'package:shop_app/theme.dart';
 import 'routes.dart';
-import 'database_helper.dart';
-import 'ThemeManager.dart';
 
 void main() {
-  final themeManager = ThemeManager(); // Crie uma instância de ThemeManager
+  runApp(
+    ChangeNotifierProvider<ThemeNotifier>(
+      create: (_) => ThemeNotifier(AppTheme.lightTheme), // Corrigido para inicializar sem context
+      child: const MyApp(),
+    ),
+  );
+}
 
-  runApp(MyApp(
-    themeManager: themeManager,
-    appRoutes: routes(themeManager), // Passe as rotas resultantes da função routes
-  ));
+class ThemeNotifier with ChangeNotifier {
+  ThemeData _themeData;
+
+  ThemeNotifier(this._themeData);
+
+  getTheme() => _themeData;
+
+  setTheme(ThemeData themeData) {
+    _themeData = themeData;
+    notifyListeners();  // Notifica os ouvintes sobre a mudança
+  }
 }
 
 class MyApp extends StatelessWidget {
-  final ThemeManager themeManager;
-  final Map<String, WidgetBuilder> appRoutes; // Adicione esta linha
+  const MyApp({super.key});
 
-  const MyApp({
-    Key? key,
-    required this.themeManager,
-    required this.appRoutes, // Corrija o construtor
-  }) : super(key: key);
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+   final themeNotifier = Provider.of<ThemeNotifier>(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'The Flutter Way - Template',
-      theme: themeManager.currentTheme(context),
-      initialRoute: SplashScreen.routeName,
-      routes: appRoutes, // Use as rotas passadas como argumento
+      theme: themeNotifier.getTheme(), // Usa o tema do ThemeNotifier
+      initialRoute: HomeScreen.routeName,
+      routes: routes,
     );
   }
 }
